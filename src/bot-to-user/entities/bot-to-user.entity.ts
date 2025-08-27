@@ -8,7 +8,7 @@ export class BotToUser {
   botToUserId: number;
 
   @Column({ default: false })
-  status: boolean;
+  license_expired: boolean;
 
   @ManyToOne(() => Bot, (bot) => bot.botToUsers)
   @JoinColumn({ name: 'botId' })

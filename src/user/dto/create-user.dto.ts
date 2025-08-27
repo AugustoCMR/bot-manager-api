@@ -4,13 +4,13 @@ import { IsEmail, IsNotEmpty, IsString, Length, MaxLength } from "class-validato
 
 export class CreateUserDto {
   @ApiProperty()
-  @Transform(({ value }) => typeof value === 'string' ? value.trim() : value)
+  @Transform(({ value }) => typeof value === 'string' ? value.trim().toLowerCase() : value)
   @IsEmail({}, { message: "Email inválido"})
   @IsNotEmpty({message: "Email é obrigatório"})
   email:string;
 
   @ApiProperty()
-  @Transform(({ value }) => typeof value === 'string' ? value.trim() : value)
+  @Transform(({ value }) => typeof value === 'string' ? value.trim().toLowerCase() : value)
   @MaxLength(20, { message: 'Nome deve conter no máximo 200 caracteres' })
   @IsNotEmpty({message: "Nome é obrigatório"})
   name:string;

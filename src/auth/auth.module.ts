@@ -17,14 +17,14 @@ import { APP_GUARD } from "@nestjs/core";
   ],
   imports: [
     UserModule,
-    JwtModule.register({
+    JwtModule.registerAsync({
       global: true,
-      secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: "60m" },
+      useFactory: async () => ({
+        secret: process.env.JWT_SECRET,
+        signOptions: { expiresIn: "60m" },
+      }),
     }),
   ],
   exports: [AuthService],
 })
 export class AuthModule {}
-
-
